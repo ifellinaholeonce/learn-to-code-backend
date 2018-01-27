@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  moves: 
+  attempts: 1
+  completed: false
+
+two:
+  moves: 
+  attempts: 1
+  completed: false
