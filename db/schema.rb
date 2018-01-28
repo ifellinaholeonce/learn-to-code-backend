@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180128001749) do
+ActiveRecord::Schema.define(version: 20180128204455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 20180128001749) do
     t.boolean "completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "student_id"
+    t.bigint "puzzle_id"
+    t.index ["puzzle_id"], name: "index_moves_on_puzzle_id"
+    t.index ["student_id"], name: "index_moves_on_student_id"
   end
 
   create_table "puzzles", force: :cascade do |t|
@@ -49,5 +53,7 @@ ActiveRecord::Schema.define(version: 20180128001749) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "moves", "puzzles"
+  add_foreign_key "moves", "students"
   add_foreign_key "students", "teachers"
 end

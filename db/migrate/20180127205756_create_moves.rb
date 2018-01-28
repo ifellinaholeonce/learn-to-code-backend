@@ -7,5 +7,7 @@ class CreateMoves < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    add_reference :moves, :student, index: true, foreign_key: true
   end
 end

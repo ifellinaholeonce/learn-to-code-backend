@@ -53,31 +53,6 @@ student3 = teacher1.students.create!({
   password: 'tymm'
 })
 
-
-# ## MOVE
-
-# puts "Re-creating Moves ..."
-# Move.destroy_all
-
-# move1 = student1.moves.create!({
-#   moves: '["right"]',
-#   attempts: 0,
-#   completed: false
-# })
-
-# move2 = student2.moves.create!({
-#   moves: '["left"]',
-#   attempts: 0,
-#   completed: false
-# })
-
-# move3 = student3.moves.create!({
-#   moves: '["forward"]',
-#   attempts: 0,
-#   completed: false
-# })
-
-
 # PUZZLES
 
 puts "Re-creating Puzzles ..."
@@ -113,6 +88,32 @@ puzzle3 = Puzzle.create!({
       ["path", "path", "path", "path", "path"]],
     player: {x: 3, y: 3 }
   })
+})
+
+# MOVES
+
+puts "Re-creating Moves ..."
+Move.destroy_all
+
+move1 = student1.moves.create!({
+  puzzle_id: 1,
+  moves: JSON.generate([["forward", "right", "forward"], ["forward", "forward"]]),
+  attempts: 2,
+  completed: true
+})
+
+move2 = student2.moves.create!({
+  puzzle_id: 1,
+  moves: JSON.generate([["left", "forward"], ["forward", "forward"]]),
+  attempts: 3,
+  completed: true
+})
+
+move3 = student3.moves.create!({
+  puzzle_id: 1,
+  moves: JSON.generate([["forward", "right", "forward"]]),
+  attempts: 1,
+  completed: false
 })
 
 puts "DONE!"

@@ -1,7 +1,7 @@
 class MovesController < ApplicationController
 
   def index
-    @moves = Move.where(student_id: params[:id])
+    @moves = Move.where(student_id: params[:student_id])
     render json: @moves
   end
 
