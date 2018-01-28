@@ -30,18 +30,24 @@ ActiveRecord::Schema.define(version: 20180128001749) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.integer "teacher_id"
-    t.string "email"
-    t.string "password"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "teacher_id"
+    t.index ["teacher_id"], name: "index_students_on_teacher_id"
   end
 
   create_table "teachers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "students", "teachers"
 end

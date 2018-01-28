@@ -20,8 +20,10 @@ puts "Re-creating Teachers ..."
 Teacher.destroy_all
 
 teacher1 = Teacher.create!({
-  email: 'teacher',
-  password: 't'
+  first_name: 'Jane',
+  last_name: 'Doe',
+  email: 'teacher@example.com',
+  password: 'teacher'
 })
 
 
@@ -31,18 +33,24 @@ puts "Re-creating Students ..."
 Student.destroy_all
 
 student1 = teacher1.students.create!({
-  email: 'mandy',
-  password: 'm'
+  first_name: 'Mandy',
+  last_name: 'Cheang',
+  username: 'mandy',
+  password: 'mandy'
 })
 
 student2 = teacher1.students.create!({
-  email: 'andrew',
-  password: 'a'
+  first_name: 'Andrew',
+  last_name: 'Carroll',
+  username: 'andrew',
+  password: 'andrew'
 })
 
 student3 = teacher1.students.create!({
-  email: 'tymm',
-  password: 't'
+  first_name: 'Tymm',
+  last_name: 'S',
+  username: 'tymm',
+  password: 'tymm'
 })
 
 
@@ -70,14 +78,41 @@ student3 = teacher1.students.create!({
 # })
 
 
-# ## PUZZLES
+# PUZZLES
 
-# puts "Re-creating Puzzles ..."
-# Puzzle.destroy_all
+puts "Re-creating Puzzles ..."
+Puzzle.destroy_all
 
-# puzzle1 = Puzzle.create!({
-#   logic: 'example puzzle'
-# })
+puzzle1 = Puzzle.create!({
+  grid: JSON.generate({
+    board: [
+      ["trees", "trees", "trees"],
+      ["path", "path", "camp"],
+      ["trees", "trees", "trees"]],
+    player: {x: 1, y: 3 }
+  })
+})
 
+puzzle2 = Puzzle.create!({
+  grid: JSON.generate({
+    board: [
+      ["trees", "trees", "camp"],
+      ["trees", "trees", "path"],
+      ["path", "path", "path"]],
+    player: {x: 1, y: 2 }
+  })
+})
+
+puzzle3 = Puzzle.create!({
+  grid: JSON.generate({
+    board: [
+      ["path", "path", "path", "path", "path"],
+      ["path", "trees", "path", "trees", "path"],
+      ["path", "path", "path", "path", "path"],
+      ["path", "trees", "path", "trees", "path"],
+      ["path", "path", "path", "path", "path"]],
+    player: {x: 3, y: 3 }
+  })
+})
 
 puts "DONE!"

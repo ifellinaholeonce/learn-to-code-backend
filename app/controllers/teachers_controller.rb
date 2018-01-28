@@ -1,13 +1,12 @@
 class TeachersController < ApplicationController
 
-  has_secure_password
-
   def create
     @teacher = Teacher.new(teacher_params)
   end
 
   def show
     @teacher = Teacher.find_by(id: params[:id])
+    render json: @teacher
   end
 
   private
