@@ -6,16 +6,12 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find_by(id: params[:id])
-    respond_to do |format|
-      render json()
-    end
+    render json: @student
   end
 
   def index
     @students = Student.where(teacher_id: params[:id])
-    respond_to do |format|
-      render json()
-    end
+    render json: @students
   end
 
   private

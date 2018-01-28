@@ -2,18 +2,27 @@ class MovesController < ApplicationController
 
   def index
     @moves = Move.where(student_id: params[:id])
+    render json: @moves
   end
 
   def create
-    @move = Move.new(move_params)
+    @move = current_user.Move.new(move_params)
+    if params[:moves].empty?
+      @move.destroy
+    else
+      @move.save
+    end
+    render json: @move
   end
 
   def update
-
+    @move = Move.find_by(params[:id])
+    @move.update(params[:move])
   end
 
   def destroy
-
+    @move = Move.find_by(params[:id])
+    @move.destroy
   end
 
   private
