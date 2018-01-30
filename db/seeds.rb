@@ -97,22 +97,49 @@ Move.destroy_all
 
 move1 = student1.moves.create!({
   puzzle_id: 1,
-  moves: JSON.generate([["forward", "right", "forward"], ["forward", "forward"]]),
-  attempts: 2,
+  moves: JSON.generate(["forward", "right", "forward"]),
+  completed: false
+})
+
+move2 = student1.moves.create!({
+  puzzle_id: 1,
+  moves: JSON.generate(["forward", "forward"]),
   completed: true
 })
 
-move2 = student2.moves.create!({
+move3 = student1.moves.create!({
+  puzzle_id: 2,
+  moves: JSON.generate(["forward", "left", "forward"]),
+  completed: false
+})
+
+move4 = student2.moves.create!({
   puzzle_id: 1,
-  moves: JSON.generate([["left", "forward"], ["forward", "forward"]]),
-  attempts: 3,
+  moves: JSON.generate(["left", "forward"]),
+  completed: false
+})
+
+move5 = student2.moves.create!({
+  puzzle_id: 1,
+  moves: JSON.generate(["forward", "forward"]),
   completed: true
 })
 
-move3 = student3.moves.create!({
+move6 = student2.moves.create!({
+  puzzle_id: 2,
+  moves: JSON.generate(["forward", "forward", "left", "forward", "forward"]),
+  completed: true
+})
+
+move7 = student2.moves.create!({
+  puzzle_id: 2,
+  moves: JSON.generate(["forward", "forward", "left", "forward", "left", "forward"]),
+  completed: true
+})
+
+move8 = student3.moves.create!({
   puzzle_id: 1,
-  moves: JSON.generate([["forward", "right", "forward"]]),
-  attempts: 1,
+  moves: JSON.generate(["forward", "right", "forward"]),
   completed: false
 })
 
