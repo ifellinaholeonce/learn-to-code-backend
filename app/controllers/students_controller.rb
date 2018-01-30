@@ -11,7 +11,7 @@ class StudentsController < ApplicationController
 
   def index
     puts "The teacher id parameters: #{params}"
-    @students = Student.where(teacher_id: params[:teacher_id])
+    @students = Student.where(teacher_id: 1)
     render json: @students
   end
 
