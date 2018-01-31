@@ -33,27 +33,19 @@ ActiveRecord::Schema.define(version: 20180128204455) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "students", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "username"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "teacher_id"
-    t.index ["teacher_id"], name: "index_students_on_teacher_id"
-  end
-
-  create_table "teachers", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
+    t.string "type"
     t.string "first_name"
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
+    t.bigint "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["id", "type"], name: "index_users_on_id_and_type", unique: true
+    t.index ["teacher_id"], name: "index_users_on_teacher_id"
   end
 
   add_foreign_key "moves", "puzzles"
-  add_foreign_key "moves", "students"
-  add_foreign_key "students", "teachers"
 end

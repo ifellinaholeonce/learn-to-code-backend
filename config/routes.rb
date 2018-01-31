@@ -6,14 +6,10 @@ Rails.application.routes.draw do
   end
   resources :puzzles, only: [:index, :show]
 
-  # resource: :sessions, only: [create, destroy]
+  post 'user_token' => 'user_token#create'
 
   # User Authorization
   get '/signup' => 'users#new'
-  post '/users' => 'users#create'
-
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  get '/users' => 'users#show'
 
 end

@@ -1,6 +1,6 @@
-class Student < ApplicationRecord
+class Student < User
 
-  has_secure_password
+  validates :email, :first_name, :last_name, :password, presence: true
 
   has_many :moves
   belongs_to :teacher
