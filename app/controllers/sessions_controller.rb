@@ -3,8 +3,22 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def show
+    puts "The current user: #{current_user}"
+    user = {user: nil}
+    if !@current_user
+      user['user'] = ""
+    elsif @current_user.instanceof? Student
+      user['user'] = "student"
+    elsif @current_user.instanceof? Teacher
+      user['user'] = "teacher"
+    end
+    render json: user
+  end
+
   def create
-    student = Student.authenticate_with_credentials(params[:email], params[:password])
+    puts "The parameters: #{params}"
+    user = Student.authenticate_with_credentials(params[:email], params[:password])
     teacher = Teacher.authenticate_with_credentials(params[:email], params[:password])
 
     if user = student || teacher

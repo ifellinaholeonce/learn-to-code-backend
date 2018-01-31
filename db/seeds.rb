@@ -35,21 +35,21 @@ Student.destroy_all
 student1 = teacher1.students.create!({
   first_name: 'Mandy',
   last_name: 'Cheang',
-  username: 'mandy',
+  email: 'mandy',
   password: 'mandy'
 })
 
 student2 = teacher1.students.create!({
   first_name: 'Andrew',
   last_name: 'Carroll',
-  username: 'andrew',
+  email: 'andrew',
   password: 'andrew'
 })
 
 student3 = teacher1.students.create!({
   first_name: 'Tymm',
   last_name: 'S',
-  username: 'tymm',
+  email: 'tymm',
   password: 'tymm'
 })
 
