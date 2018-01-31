@@ -10,9 +10,6 @@ Rails.application.routes.draw do
 
   # User Authorization
   get '/signup' => 'users#new'
-  post '/users' => 'users#create'
-
-  get '/user' => 'sessions#show'
-  get '/logout' => 'sessions#destroy'
+  get '/users' => 'users#show'
 
 end
