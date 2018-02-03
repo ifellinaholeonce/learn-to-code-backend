@@ -2,7 +2,8 @@ class MovesController < ApplicationController
 
   def index
     @moves = Move.where(student_id: params[:student_id])
-    render json: @moves
+    @puzzles = Puzzle.all
+    render json: {moves: @moves, puzzles: @puzzles}
   end
 
   def create
@@ -13,16 +14,6 @@ class MovesController < ApplicationController
       @move.save
     end
     render json: @move
-  end
-
-  def update
-    @move = Move.find_by(params[:id])
-    @move.update(params[:move])
-  end
-
-  def destroy
-    @move = Move.find_by(params[:id])
-    @move.destroy
   end
 
   private

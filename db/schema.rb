@@ -28,7 +28,9 @@ ActiveRecord::Schema.define(version: 20180128204455) do
   end
 
   create_table "puzzles", force: :cascade do |t|
-    t.json "grid"
+    t.string "name"
+    t.string "concept"
+    t.json "game"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

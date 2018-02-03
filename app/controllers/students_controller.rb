@@ -4,11 +4,6 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
   end
 
-  def show
-    @student = Student.find_by(id: params[:id])
-    render json: @student
-  end
-
   def index
     puts "The teacher id parameters: #{params}"
     @students = Student.where(teacher_id: 1)
