@@ -59,35 +59,54 @@ puts "Re-creating Puzzles ..."
 Puzzle.destroy_all
 
 puzzle1 = Puzzle.create!({
-  grid: JSON.generate({
-    board: [
-      ["trees", "trees", "trees"],
-      ["path", "path", "camp"],
-      ["trees", "trees", "trees"]],
-    player: {x: 1, y: 3 }
-  })
+  game: {
+    grid: [
+      {x: 0, y: 0, type: "trees"}, {x: 1, y: 0, type: "trees"}, {x: 2, y: 0, type: "camp"}, {x: 3, y: 0, type: "trees"}, {x: 4, y: 0, type: "trees"},
+      {x: 0, y: 1, type: "trees"}, {x: 1, y: 1, type: "trees"}, {x: 2, y: 1, type: "path"}, {x: 3, y: 1, type: "trees"}, {x: 4, y: 1, type: "trees"},
+      {x: 0, y: 2, type: "path" }, {x: 1, y: 2, type: "path" }, {x: 2, y: 2, type: "path"}, {x: 3, y: 2, type: "trees"}, {x: 4, y: 2, type: "trees"},
+      {x: 0, y: 3, type: "trees"}, {x: 1, y: 3, type: "trees"}, {x: 2, y: 3, type: "path"}, {x: 3, y: 3, type: "trees"}, {x: 4, y: 3, type: "trees"},
+      {x: 0, y: 4, type: "trees"}, {x: 1, y: 4, type: "trees"}, {x: 2, y: 4, type: "path"}, {x: 3, y: 4, type: "trees"}, {x: 4, y: 4, type: "trees"},
+    ],
+    startLoc: {x: 1, y: 3 },
+    startDir: 2,
+    hints: ["forward", "left", "forward"]
+  },
+  name: "Adventure",
+  concept: "Go forward"
 })
 
 puzzle2 = Puzzle.create!({
-  grid: JSON.generate({
-    board: [
-      ["trees", "trees", "camp"],
-      ["trees", "trees", "path"],
-      ["path", "path", "path"]],
-    player: {x: 1, y: 2 }
-  })
+  game: {
+    grid: [
+      {x: 0, y: 0, type: "trees"}, {x: 1, y: 0, type: "trees"}, {x: 2, y: 0, type: "trees"}, {x: 3, y: 0, type: "trees"}, {x: 4, y: 0, type: "trees"},
+      {x: 0, y: 1, type: "path"}, {x: 1, y: 1, type: "path"}, {x: 2, y: 1, type: "path"}, {x: 3, y: 1, type: "path"}, {x: 4, y: 1, type: "trees"},
+      {x: 0, y: 2, type: "path" }, {x: 1, y: 2, type: "path" }, {x: 2, y: 2, type: "path"}, {x: 3, y: 2, type: "path"}, {x: 4, y: 2, type: "trees"},
+      {x: 0, y: 3, type: "trees"}, {x: 1, y: 3, type: "trees"}, {x: 2, y: 3, type: "trees"}, {x: 3, y: 3, type: "path"}, {x: 4, y: 3, type: "trees"},
+      {x: 0, y: 4, type: "trees"}, {x: 1, y: 4, type: "trees"}, {x: 2, y: 4, type: "camp"}, {x: 3, y: 4, type: "path"}, {x: 4, y: 4, type: "trees"},
+    ],
+    startLoc: {x: 2, y: 1 },
+    startDir: 2,
+    hints: ["forward", "forward", "right", "forward"]
+  },
+  name: "Lost",
+  concept: "Rotate"
 })
 
 puzzle3 = Puzzle.create!({
-  grid: JSON.generate({
-    board: [
-      ["path", "path", "path", "path", "path"],
-      ["path", "trees", "path", "trees", "path"],
-      ["path", "path", "path", "path", "path"],
-      ["path", "trees", "path", "trees", "path"],
-      ["path", "path", "path", "path", "path"]],
-    player: {x: 3, y: 3 }
-  })
+  game: {
+    grid: [
+      {x: 0, y: 0, type: "path"}, {x: 1, y: 0, type: "path"}, {x: 2, y: 0, type: "camp"}, {x: 3, y: 0, type: "path"}, {x: 4, y: 0, type: "trees"},
+      {x: 0, y: 1, type: "path"}, {x: 1, y: 1, type: "path"}, {x: 2, y: 1, type: "path"}, {x: 3, y: 1, type: "path"}, {x: 4, y: 1, type: "trees"},
+      {x: 0, y: 2, type: "path" }, {x: 1, y: 2, type: "path" }, {x: 2, y: 2, type: "path"}, {x: 3, y: 2, type: "trees"}, {x: 4, y: 2, type: "trees"},
+      {x: 0, y: 3, type: "trees"}, {x: 1, y: 3, type: "trees"}, {x: 2, y: 3, type: "path"}, {x: 3, y: 3, type: "trees"}, {x: 4, y: 3, type: "trees"},
+      {x: 0, y: 4, type: "trees"}, {x: 1, y: 4, type: "trees"}, {x: 2, y: 4, type: "path"}, {x: 3, y: 4, type: "trees"}, {x: 4, y: 4, type: "trees"},
+    ],
+    startLoc: {x: 0, y: 1 },
+    startDir: 3,
+    hints: ["left", "left", "forward", "forward"]
+  },
+  name: "Help",
+  concept: "Looping"
 })
 
 # MOVES
@@ -97,49 +116,49 @@ Move.destroy_all
 
 move1 = student1.moves.create!({
   puzzle_id: 1,
-  moves: JSON.generate(["forward", "right", "forward"]),
+  moves: ["forward", "right", "forward"],
   completed: false
 })
 
 move2 = student1.moves.create!({
   puzzle_id: 1,
-  moves: JSON.generate(["forward", "forward"]),
+  moves: ["forward", "forward"],
   completed: true
 })
 
 move3 = student1.moves.create!({
   puzzle_id: 2,
-  moves: JSON.generate(["forward", "left", "forward"]),
+  moves: ["forward", "left", "forward"],
   completed: false
 })
 
 move4 = student2.moves.create!({
   puzzle_id: 1,
-  moves: JSON.generate(["left", "forward"]),
+  moves: ["left", "forward"],
   completed: false
 })
 
 move5 = student2.moves.create!({
   puzzle_id: 1,
-  moves: JSON.generate(["forward", "forward"]),
+  moves: ["forward", "forward"],
   completed: true
 })
 
 move6 = student2.moves.create!({
   puzzle_id: 2,
-  moves: JSON.generate(["forward", "forward", "left", "forward", "forward"]),
+  moves: ["forward", "forward", "left", "forward", "forward"],
   completed: true
 })
 
 move7 = student2.moves.create!({
   puzzle_id: 2,
-  moves: JSON.generate(["forward", "forward", "left", "forward", "left", "forward"]),
+  moves: ["forward", "forward", "left", "forward", "left", "forward"],
   completed: true
 })
 
 move8 = student3.moves.create!({
   puzzle_id: 1,
-  moves: JSON.generate(["forward", "right", "forward"]),
+  moves: ["forward", "right", "forward"],
   completed: false
 })
 

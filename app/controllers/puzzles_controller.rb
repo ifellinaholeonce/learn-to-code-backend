@@ -1,16 +1,11 @@
 class PuzzlesController < ApplicationController
 
-  def show
-    @puzzle = Puzzle.find(params[:id])
-    render json: @puzzle
-  end
-
   def index
     @puzzles = Puzzle.all
     render json: @puzzles
   end
 
-  def new
+  def create
     @puzzle = Puzzle.new(puzzle_params)
   end
 
