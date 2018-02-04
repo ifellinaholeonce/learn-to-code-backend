@@ -1,19 +1,29 @@
 class StudentsController < ApplicationController
 
   def create
-    @student = Student.new(student_params)
+    @teacher = Teacher.find(1)
+    @student = @teacher.students.new(student_params)
+
+    if @student.save
+      render json: @student, status: 201
+    else
+      render plain: "Invalid student", status: 400
+    end
   end
 
   def index
-    puts "The teacher id parameters: #{params}"
     @students = Student.where(teacher_id: 1)
-    render json: @students
+    response = @students.map do |student|
+      moves = {student: student, moves: student.moves}
+    end
+
+    render json: response
   end
 
   private
 
   def student_params
-    require(:student).permit(:first_name, :last_name, :username, :password, :password_confirmation)
+    params.require(:student).permit(:first_name, :last_name, :email, :password)
   end
 
 end

@@ -48,7 +48,7 @@ student2 = teacher1.students.create!({
 
 student3 = teacher1.students.create!({
   first_name: 'Tymm',
-  last_name: 'S',
+  last_name: 'Schmitke',
   email: 'tymm',
   password: 'tymm'
 })
