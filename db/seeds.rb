@@ -61,52 +61,91 @@ Puzzle.destroy_all
 puzzle1 = Puzzle.create!({
   game: {
     grid: [
-      {x: 0, y: 0, type: "trees"}, {x: 1, y: 0, type: "trees"}, {x: 2, y: 0, type: "camp"}, {x: 3, y: 0, type: "trees"}, {x: 4, y: 0, type: "trees"},
+      {x: 0, y: 0, type: "trees"}, {x: 1, y: 0, type: "trees"}, {x: 2, y: 0, type: "path"}, {x: 3, y: 0, type: "trees"}, {x: 4, y: 0, type: "trees"},
       {x: 0, y: 1, type: "trees"}, {x: 1, y: 1, type: "trees"}, {x: 2, y: 1, type: "path"}, {x: 3, y: 1, type: "trees"}, {x: 4, y: 1, type: "trees"},
-      {x: 0, y: 2, type: "path" }, {x: 1, y: 2, type: "path" }, {x: 2, y: 2, type: "path"}, {x: 3, y: 2, type: "trees"}, {x: 4, y: 2, type: "trees"},
-      {x: 0, y: 3, type: "trees"}, {x: 1, y: 3, type: "trees"}, {x: 2, y: 3, type: "path"}, {x: 3, y: 3, type: "trees"}, {x: 4, y: 3, type: "trees"},
-      {x: 0, y: 4, type: "trees"}, {x: 1, y: 4, type: "trees"}, {x: 2, y: 4, type: "path"}, {x: 3, y: 4, type: "trees"}, {x: 4, y: 4, type: "trees"},
+      {x: 0, y: 2, type: "trees"}, {x: 1, y: 2, type: "trees"}, {x: 2, y: 2, type: "camp"}, {x: 3, y: 2, type: "trees"}, {x: 4, y: 2, type: "trees"},
+      {x: 0, y: 3, type: "trees"}, {x: 1, y: 3, type: "trees"}, {x: 2, y: 3, type: "trees"}, {x: 3, y: 3, type: "trees"}, {x: 4, y: 3, type: "trees"},
+      {x: 0, y: 4, type: "trees"}, {x: 1, y: 4, type: "trees"}, {x: 2, y: 4, type: "trees"}, {x: 3, y: 4, type: "trees"}, {x: 4, y: 4, type: "trees"},
     ],
-    startLoc: {x: 1, y: 3 },
-    startDir: 2,
-    hints: ["forward", "left", "forward"]
+    startLoc: {x: 2, y: 0},
+    startDir: 3,
+    hints: ["forward", "forward"],
+    question: "Get Sam to the camp."
   },
-  name: "Adventure",
-  concept: "Go forward"
+  name: "Charge",
+  concept: "Move forward"
 })
 
 puzzle2 = Puzzle.create!({
   game: {
     grid: [
-      {x: 0, y: 0, type: "trees"}, {x: 1, y: 0, type: "trees"}, {x: 2, y: 0, type: "trees"}, {x: 3, y: 0, type: "trees"}, {x: 4, y: 0, type: "trees"},
-      {x: 0, y: 1, type: "path"}, {x: 1, y: 1, type: "path"}, {x: 2, y: 1, type: "path"}, {x: 3, y: 1, type: "path"}, {x: 4, y: 1, type: "trees"},
-      {x: 0, y: 2, type: "path" }, {x: 1, y: 2, type: "path" }, {x: 2, y: 2, type: "path"}, {x: 3, y: 2, type: "path"}, {x: 4, y: 2, type: "trees"},
-      {x: 0, y: 3, type: "trees"}, {x: 1, y: 3, type: "trees"}, {x: 2, y: 3, type: "trees"}, {x: 3, y: 3, type: "path"}, {x: 4, y: 3, type: "trees"},
-      {x: 0, y: 4, type: "trees"}, {x: 1, y: 4, type: "trees"}, {x: 2, y: 4, type: "camp"}, {x: 3, y: 4, type: "path"}, {x: 4, y: 4, type: "trees"},
+      {x: 0, y: 0, type: "trees"}, {x: 1, y: 0, type: "trees"}, {x: 2, y: 0, type: "path"}, {x: 3, y: 0, type: "trees"}, {x: 4, y: 0, type: "trees"},
+      {x: 0, y: 1, type: "trees"}, {x: 1, y: 1, type: "trees"}, {x: 2, y: 1, type: "path"}, {x: 3, y: 1, type: "trees"}, {x: 4, y: 1, type: "trees"},
+      {x: 0, y: 2, type: "camp"}, {x: 1, y: 2, type: "path"}, {x: 2, y: 2, type: "path"}, {x: 3, y: 2, type: "trees"}, {x: 4, y: 2, type: "trees"},
+      {x: 0, y: 3, type: "trees"}, {x: 1, y: 3, type: "trees"}, {x: 2, y: 3, type: "trees"}, {x: 3, y: 3, type: "trees"}, {x: 4, y: 3, type: "trees"},
+      {x: 0, y: 4, type: "trees"}, {x: 1, y: 4, type: "trees"}, {x: 2, y: 4, type: "trees"}, {x: 3, y: 4, type: "trees"}, {x: 4, y: 4, type: "trees"},
     ],
-    startLoc: {x: 2, y: 1 },
-    startDir: 2,
-    hints: ["forward", "forward", "right", "forward"]
+    startLoc: {x: 2, y: 0},
+    startDir: 3,
+    hints: ["forward", "forward", "right", "forward"],
+    question: "Get Sam to the camp."
   },
-  name: "Lost",
-  concept: "Rotate"
+  name: "Corner",
+  concept: "Turning"
 })
 
 puzzle3 = Puzzle.create!({
   game: {
     grid: [
-      {x: 0, y: 0, type: "path"}, {x: 1, y: 0, type: "path"}, {x: 2, y: 0, type: "camp"}, {x: 3, y: 0, type: "path"}, {x: 4, y: 0, type: "trees"},
-      {x: 0, y: 1, type: "path"}, {x: 1, y: 1, type: "path"}, {x: 2, y: 1, type: "path"}, {x: 3, y: 1, type: "path"}, {x: 4, y: 1, type: "trees"},
-      {x: 0, y: 2, type: "path" }, {x: 1, y: 2, type: "path" }, {x: 2, y: 2, type: "path"}, {x: 3, y: 2, type: "trees"}, {x: 4, y: 2, type: "trees"},
-      {x: 0, y: 3, type: "trees"}, {x: 1, y: 3, type: "trees"}, {x: 2, y: 3, type: "path"}, {x: 3, y: 3, type: "trees"}, {x: 4, y: 3, type: "trees"},
-      {x: 0, y: 4, type: "trees"}, {x: 1, y: 4, type: "trees"}, {x: 2, y: 4, type: "path"}, {x: 3, y: 4, type: "trees"}, {x: 4, y: 4, type: "trees"},
+      {x: 0, y: 0, type: "trees"}, {x: 1, y: 0, type: "path"}, {x: 2, y: 0, type: "trees"}, {x: 3, y: 0, type: "trees"}, {x: 4, y: 0, type: "trees"},
+      {x: 0, y: 1, type: "path"}, {x: 1, y: 1, type: "path"}, {x: 2, y: 1, type: "trees"}, {x: 3, y: 1, type: "trees"}, {x: 4, y: 1, type: "trees"},
+      {x: 0, y: 2, type: "path"}, {x: 1, y: 2, type: "trees"}, {x: 2, y: 2, type: "path"}, {x: 3, y: 2, type: "camp"}, {x: 4, y: 2, type: "trees"},
+      {x: 0, y: 3, type: "path"}, {x: 1, y: 3, type: "path"}, {x: 2, y: 3, type: "path"}, {x: 3, y: 3, type: "trees"}, {x: 4, y: 3, type: "trees"},
+      {x: 0, y: 4, type: "trees"}, {x: 1, y: 4, type: "trees"}, {x: 2, y: 4, type: "trees"}, {x: 3, y: 4, type: "trees"}, {x: 4, y: 4, type: "trees"},
     ],
-    startLoc: {x: 0, y: 1 },
+    startLoc: {x: 1, y: 0},
     startDir: 3,
-    hints: ["left", "left", "forward", "forward"]
+    hints: ["forward", "right", "forward", "left", "forward", "forward", "forward"],
+    question: "Get Sam to the camp."
   },
-  name: "Help",
-  concept: "Looping"
+  name: "Snake",
+  concept: "Multiple turns"
+})
+
+puzzle4 = Puzzle.create!({
+  game: {
+    grid: [
+      {x: 0, y: 0, type: "path"}, {x: 1, y: 0, type: "path"}, {x: 2, y: 0, type: "path"}, {x: 3, y: 0, type: "path"}, {x: 4, y: 0, type: "camp"},
+      {x: 0, y: 1, type: "path"}, {x: 1, y: 1, type: "trees"}, {x: 2, y: 1, type: "trees"}, {x: 3, y: 1, type: "trees"}, {x: 4, y: 1, type: "trees"},
+      {x: 0, y: 2, type: "path"}, {x: 1, y: 2, type: "trees"}, {x: 2, y: 2, type: "camp"}, {x: 3, y: 2, type: "path"}, {x: 4, y: 2, type: "path"},
+      {x: 0, y: 3, type: "path"}, {x: 1, y: 3, type: "trees"}, {x: 2, y: 3, type: "trees"}, {x: 3, y: 3, type: "trees"}, {x: 4, y: 3, type: "path"},
+      {x: 0, y: 4, type: "path"}, {x: 1, y: 4, type: "path"}, {x: 2, y: 4, type: "path"}, {x: 3, y: 4, type: "path"}, {x: 4, y: 4, type: "path"},
+    ],
+    startLoc: {x: 2, y: 2},
+    startDir: 2,
+    hints: ["forward", "forward", "right", "forward", "forward", "loop the length of the side and turn right"],
+    question: "Get Sam to the camp."
+  },
+  name: "Around",
+  concept: "Loop"
+})
+
+puzzle5 = Puzzle.create!({
+  game: {
+    grid: [
+      {x: 0, y: 0, type: "trees"}, {x: 1, y: 0, type: "trees"}, {x: 2, y: 0, type: "trees"}, {x: 3, y: 0, type: "trees"}, {x: 4, y: 0, type: "trees"},
+      {x: 0, y: 1, type: "trees"}, {x: 1, y: 1, type: "path"}, {x: 2, y: 1, type: "path"}, {x: 3, y: 1, type: "path"}, {x: 4, y: 1, type: "trees"},
+      {x: 0, y: 2, type: "trees"}, {x: 1, y: 2, type: "path"}, {x: 2, y: 2, type: "trees"}, {x: 3, y: 2, type: "path"}, {x: 4, y: 2, type: "trees"},
+      {x: 0, y: 3, type: "trees"}, {x: 1, y: 3, type: "path"}, {x: 2, y: 3, type: "path"}, {x: 3, y: 3, type: "path"}, {x: 4, y: 3, type: "trees"},
+      {x: 0, y: 4, type: "trees"}, {x: 1, y: 4, type: "trees"}, {x: 2, y: 4, type: "trees"}, {x: 3, y: 4, type: "trees"}, {x: 4, y: 4, type: "trees"},
+    ],
+    startLoc: {x: 2, y: 2},
+    startDir: 2,
+    hints: ["forward", "forward", "right", "forward", "forward", "loop the length of the side and turn right"],
+    question: "Collect all the berries."
+  },
+  name: "Collect",
+  concept: "Loop with pickup"
 })
 
 # MOVES
@@ -116,20 +155,20 @@ Move.destroy_all
 
 move1 = student1.moves.create!({
   puzzle_id: 1,
-  moves: [{movement: {dir: "forward"}}, {movement: {dir: "right"}},{movement: {dir: "forward"}}],
-  completed: false
-})
-
-move2 = student1.moves.create!({
-  puzzle_id: 1,
   moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
   completed: true
 })
 
+move2 = student1.moves.create!({
+  puzzle_id: 2,
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}, {movement: {dir: "left"}}, {movement: {dir: "forward"}}],
+  completed: false
+})
+
 move3 = student1.moves.create!({
   puzzle_id: 2,
-  moves: [{movement: {dir: "forward"}}, {movement: {dir: "left"}}, {movement: {dir: "forward"}}],
-  completed: false
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}, {movement: {dir: "right"}}, {movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
+  completed: true
 })
 
 move4 = student2.moves.create!({
@@ -146,28 +185,63 @@ move5 = student2.moves.create!({
 
 move6 = student2.moves.create!({
   puzzle_id: 2,
-  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}, {movement: {dir: "left"}}, {movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
-  completed: true
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
+  completed: false
 })
 
 move7 = student2.moves.create!({
   puzzle_id: 2,
-  moves: [
-    {loop: {num: 2, cmds:[{movement: {dir: "forward"}},
-    {movement: {dir: "left"}}]}},
-    {movement: {dir: "forward"}},
-    {movement: {dir: "left"}},
-    {movement: {dir: "forward"}}],
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}, {movement: {dir: "right"}}, {movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
   completed: true
 })
 
 move8 = student3.moves.create!({
   puzzle_id: 1,
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
+  completed: false
+})
+
+move9 = student3.moves.create!({
+  puzzle_id: 2,
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}, {movement: {dir: "right"}}, {movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
+  completed: true
+})
+
+move10 = student3.moves.create!({
+  puzzle_id: 3,
   moves: [
     {movement: {dir: "forward"}},
     {movement: {dir: "right"}},
-    {pickup: {item: "berry"}}],
-  completed: false
+    {movement: {dir: "forward"}},
+    {movement: {dir: "left"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "left"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "left"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}},
+    {movement: {dir: "forward"}}],
+  completed: true
+})
+
+move11 = student3.moves.create!({
+  puzzle_id: 3,
+  moves: [
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}},
+    {loop: {num: 3, cmds: [
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}}]
+    }}],
+  completed: true
 })
 
 puts "DONE!"
