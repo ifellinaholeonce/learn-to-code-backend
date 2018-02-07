@@ -48,7 +48,7 @@ student2 = teacher1.students.create!({
 
 student3 = teacher1.students.create!({
   first_name: 'Tymm',
-  last_name: 'S',
+  last_name: 'Schmitke',
   email: 'tymm',
   password: 'tymm'
 })
@@ -116,49 +116,57 @@ Move.destroy_all
 
 move1 = student1.moves.create!({
   puzzle_id: 1,
-  moves: ["forward", "right", "forward"],
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "right"}},{movement: {dir: "forward"}}],
   completed: false
 })
 
 move2 = student1.moves.create!({
   puzzle_id: 1,
-  moves: ["forward", "forward"],
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
   completed: true
 })
 
 move3 = student1.moves.create!({
   puzzle_id: 2,
-  moves: ["forward", "left", "forward"],
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "left"}}, {movement: {dir: "forward"}}],
   completed: false
 })
 
 move4 = student2.moves.create!({
   puzzle_id: 1,
-  moves: ["left", "forward"],
+  moves: [{movement: {dir: "left"}}, {movement: {dir: "forward"}}],
   completed: false
 })
 
 move5 = student2.moves.create!({
   puzzle_id: 1,
-  moves: ["forward", "forward"],
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
   completed: true
 })
 
 move6 = student2.moves.create!({
   puzzle_id: 2,
-  moves: ["forward", "forward", "left", "forward", "forward"],
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}, {movement: {dir: "left"}}, {movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
   completed: true
 })
 
 move7 = student2.moves.create!({
   puzzle_id: 2,
-  moves: ["forward", "forward", "left", "forward", "left", "forward"],
+  moves: [
+    {loop: {num: 2, cmds:[{movement: {dir: "forward"}},
+    {movement: {dir: "left"}}]}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "left"}},
+    {movement: {dir: "forward"}}],
   completed: true
 })
 
 move8 = student3.moves.create!({
   puzzle_id: 1,
-  moves: ["forward", "right", "forward"],
+  moves: [
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}},
+    {pickup: {item: "berry"}}],
   completed: false
 })
 
