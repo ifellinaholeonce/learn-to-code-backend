@@ -7,18 +7,19 @@ class MovesController < ApplicationController
   end
 
   def create
-    @move = current_user.Move.new(move_params)
+    @move = current_user.moves.new(completed: params[:completed], moves: params[:moves], puzzle_id: params[:puzzle_id])
     if params[:moves].empty?
       @move.destroy
+      render plain: "Invalid move", status: 400
     else
       @move.save
+      render json: @move, status: 201
     end
-    render json: @move
   end
 
   private
 
   def move_params
-    require(:move).permit(:moves)
+    params.require(:move).permit(:moves, :completed, :puzzle_id)
   end
 end
