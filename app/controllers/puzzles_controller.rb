@@ -7,6 +7,7 @@ class PuzzlesController < ApplicationController
 
   def create
     @puzzle = Puzzle.new(puzzle_params)
+    render json: @puzzle
   end
 
   private
