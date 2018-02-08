@@ -227,7 +227,7 @@ move10 = student3.moves.create!({
 })
 
 move11 = student3.moves.create!({
-  puzzle_id: 3,
+  puzzle_id: 4,
   moves: [
     {movement: {dir: "forward"}},
     {movement: {dir: "forward"}},
@@ -236,6 +236,7 @@ move11 = student3.moves.create!({
     {movement: {dir: "forward"}},
     {movement: {dir: "right"}},
     {loop: {num: 3, cmds: [
+    {movement: {dir: "forward"}},
     {movement: {dir: "forward"}},
     {movement: {dir: "forward"}},
     {movement: {dir: "forward"}},
