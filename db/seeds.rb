@@ -53,6 +53,7 @@ student3 = teacher1.students.create!({
   password: 'tymm'
 })
 
+
 # PUZZLES
 
 puts "Re-creating Puzzles ..."
@@ -198,7 +199,7 @@ move7 = student2.moves.create!({
 move8 = student3.moves.create!({
   puzzle_id: 1,
   moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
-  completed: false
+  completed: true
 })
 
 move9 = student3.moves.create!({
@@ -243,5 +244,114 @@ move11 = student3.moves.create!({
     }}],
   completed: true
 })
+
+move1 = {
+  puzzle_id: 1,
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
+  completed: true
+}
+
+move2 = {
+  puzzle_id: 1,
+  moves: [{movement: {dir: "left"}}, {movement: {dir: "forward"}}],
+  completed: false
+}
+
+move3 = {
+  puzzle_id: 2,
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}, {movement: {dir: "right"}}, {movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
+  completed: true
+}
+
+move4 = {
+  puzzle_id: 2,
+  moves: [{movement: {dir: "forward"}}, {movement: {dir: "forward"}}, {movement: {dir: "forward"}}],
+  completed: false
+}
+
+move5 = {
+  puzzle_id: 3,
+  moves: [
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "left"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "left"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "left"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}},
+    {movement: {dir: "forward"}}],
+  completed: true
+}
+
+move6 = {
+  puzzle_id: 3,
+  moves: [
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}},
+    {loop: {num: 3, cmds: [
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}}]
+    }}],
+  completed: true
+}
+
+move7 = {
+  puzzle_id: 3,
+  moves: [
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}},
+    {loop: {num: 3, cmds: [
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "forward"}},
+    {movement: {dir: "right"}}]
+    }}],
+  completed: false
+}
+
+puzzle1solutions = [move1, move1, move2]
+puzzle2solutions = [move3, move4]
+puzzle3solutions = [move5, move6, move7]
+
+allSolutions = [puzzle1solutions, puzzle2solutions, puzzle3solutions]
+
+10.times do
+  name = Faker::Name.first_name
+
+  student = teacher1.students.create!({
+    first_name: name,
+    last_name: Faker::Name.last_name,
+    email: name,
+    password: name
+  })
+
+  i = true
+  j = 0
+  while i == true do
+    index = rand(allSolutions[j].length)
+    solution = allSolutions[j][index]
+    puts solution[:completed]
+    student.moves.create!( solution )
+    if j == 2 then
+      i = false
+    elsif solution[:completed] then
+      j += 1
+    else
+      i = false
+    end
+  end
+end
 
 puts "DONE!"
